@@ -21,7 +21,13 @@ class Controller:
     # TODO
 
     # CALLBACKS DROPDOWN
-    # TODO
+    def scegli_biblioteca(self,e):
+        pass
+    def scegli_genere(self,e):
+        pass
+
+
 
     # AZIONE: MOSTRA LIBRI
-    # TODO
+    def mostra_libri(self,e):
+        pass
