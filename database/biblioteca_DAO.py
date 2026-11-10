@@ -11,8 +11,8 @@ class BibliotecaDAO:
         pass
 
     def get_biblioteca(self): #Metodo per ottenere i nomi delle biblioteche dal database
-        db = DBConnect()        # Cerco di connettermi
-        cnx=db.get_connection() # al database
+        cnx = DBConnect.get_connection()        # Cerco di connettermi al database
+        lista_biblioteche = []  # lista dove salvare biblioteche
         if cnx is not None:     #Se mi son connesso lo printo nel terminal
             print("Connection established")
             cursor=cnx.cursor(dictionary=True)
@@ -21,11 +21,16 @@ class BibliotecaDAO:
             # di 3 parametri quindi devo estrarli tutti e 3 potrebbero servirmi in
             # futuro, anche se per questo compito per popolare drop down basta nome
             cursor.execute("SELECT id,nome,indirizzo FROM biblioteca")
-            lista_biblioteche=[] #lista dove salvare biblioteche
             for riga in cursor:
                 lista_biblioteche.append(Biblioteca(riga["id"], riga["nome"], riga["indirizzo"]))
             cursor.close()
             cnx.close()
-            return lista_biblioteche
+        return lista_biblioteche
+
+
+#Test per vedere se tutto funziona, print di debug
+if __name__ == "__main__":
+    dao = BibliotecaDAO()
+    print(dao.get_biblioteca())
 
 

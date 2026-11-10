@@ -51,6 +51,7 @@ class View:
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)
 
         # --- Layout della pagina ---
+        self.lista_libri = ft.ListView(spacing=5, height=400)
         self.page.add(
             self.toggle_cambia_tema,
 
@@ -67,9 +68,11 @@ class View:
 
             # Sezione 3: Libri
             self.pulsante_mostra_libri,
+            self.lista_libri,
         )
 
         self.page.scroll = "adaptive"
+        self.controller.popola_dropdown() #Da commentare
         self.page.update()
 
     def cambia_tema(self, e):
