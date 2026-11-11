@@ -29,8 +29,10 @@ class LibroDAO:
         cnx = DBConnect.get_connection()
         if cnx is not None:
             cursor = cnx.cursor(dictionary=True)
+            #Query che estrae praticamente qualsiasi info da "database libro"
             cursor.execute("SELECT id, titolo, autore, genere, anno_pubblicazione, id_biblioteca FROM libro")
             for riga in cursor:
+                #Aggiungo le info appena trovate all'oggetto libro
                 lista_libri.append(Libro(riga["id"],
                                          riga["titolo"],
                                          riga["autore"],
